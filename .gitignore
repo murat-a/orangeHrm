@@ -5,3 +5,4 @@ test/.pytest_cache/**
 .pytest_cache/**
 allure-results/
 allure-report/
+.env

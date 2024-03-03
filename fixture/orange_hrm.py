@@ -1,5 +1,9 @@
-from fixture.step import StepHelper
+import os
 
+from fixture.step import StepHelper
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class OrangeHrm:
 
@@ -27,7 +31,11 @@ class OrangeHrm:
     def click_login_button(self):
         self.step.click_on_element(self.login_button)
 
-    def login_to_the_application(self, username='Admin', password='qTJn5@5APu'):
+    def login_to_the_application(self, username=None, password=None):
+        if username is None:
+            username = os.getenv('USERNAME')
+        if password is None:
+            password = os.getenv('PASSWORD')
         self.set_username(username)
         self.set_password(password)
         self.click_login_button()
