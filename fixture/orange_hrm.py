@@ -33,7 +33,7 @@ class OrangeHrm:
 
     def login_to_the_application(self, username=None, password=None):
         if username is None:
-            username = os.getenv('USERNAME')
+            username = os.getenv('USERNAME_TEST')
         if password is None:
             password = os.getenv('PASSWORD')
         self.set_username(username)
