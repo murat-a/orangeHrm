@@ -51,7 +51,7 @@ Besides using PyCharm configurations, you can run tests directly from the consol
 ### Run All Tests
 
 ```bash
-python runner.py test
+python runner.py testNormal
 ```
 
 ### Run All Tests in Headless Mode
@@ -65,4 +65,3 @@ python runner.py testHeadless
 ```bash
 python runner.py openReport
 ```
-
