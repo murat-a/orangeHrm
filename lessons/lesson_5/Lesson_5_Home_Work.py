@@ -2,7 +2,7 @@
 
 def print_hello_world():
     """Task 1: Print 'Hello, World!' to the console."""
-    # Your code here
+    print('hello world')
 
 def create_and_print_variables():
     """Task 2: Create two variables, `greeting` with any text and `number` with any number, then print both."""
