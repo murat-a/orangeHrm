@@ -73,7 +73,7 @@ Whenever there are updates announced, pull them from the upstream repository:
 
     ```bash
     git checkout master
-    git merge upstream/main
+    git merge upstream/master
     ```
 
 3. If you have made changes that conflict with the updates, you may need to resolve conflicts.
