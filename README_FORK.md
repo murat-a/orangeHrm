@@ -72,7 +72,7 @@ Whenever there are updates announced, pull them from the upstream repository:
 2. Merge the updates into your main branch:
 
     ```bash
-    git checkout main
+    git checkout master
     git merge upstream/main
     ```
 
