@@ -83,3 +83,10 @@ Repeat these steps whenever you need to pull new updates from the original repos
 ---
 
 By following these instructions, you'll ensure that your local development environment is correctly set up to work on assignments and stay up-to-date with course materials.
+Also there is the way how to pull updates using GitHub UI
+
+![](images/1.png)
+![](images/2.png)
+![](images/3.png)
+![](images/4.png)
+![](images/5.png)
