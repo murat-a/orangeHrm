@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-class OrangeHrm:
 
+class OrangeHrm:
     username_field = 'input[id="txtUsername"]'
     password_field = 'input[id="txtPassword"]'
     login_button = 'button[type="submit"]'
