@@ -104,7 +104,7 @@ class StepHelper:
             texts.append(text)
         return texts
 
-    def click_element_by_text(self, locator, text, timeout=10):
+    def click_element_by_text(self, locator, text):
         elements = self.get_list_of_elements(locator)
         for element in elements:
             ActionChains(self.wd).scroll_to_element(element).perform()
