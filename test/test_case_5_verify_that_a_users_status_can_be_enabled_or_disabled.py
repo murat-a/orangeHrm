@@ -1,8 +1,9 @@
 # Test Case 3: Verify that a user's status can be enabled or disabled
 # Steps:
-# 1. Navigate to the "User Management" section in the OrangeHRM application.
-# 2. Click on the username of an existing user to navigate to their details.
-# 3. Toggle the "Status" to either Enabled or Disabled.
-# 4. Click on the "Save" button.
+# 1. Navigate to the "HR Administration" section in the OrangeHRM application.
+# 2. Click on the "Filter" icon/button.
+# 3. Enter the username of non-existing user in the Username field.
+# 4. Click on the "Search" button.
 # Expected Result:
-# The system should save the new status, and the user should be either enabled or disabled based on the selection.
+# The system should filter out and display empty list of users.
+# The Message: 'No Records Found' should be displayed.

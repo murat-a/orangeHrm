@@ -1,6 +1,7 @@
 import os
 
 from fixture.hr_administration import HrAdministration
+from fixture.pop_up import PopUp
 from fixture.side_menu import SideMenu
 from fixture.step import StepHelper
 from dotenv import load_dotenv
@@ -22,6 +23,7 @@ class OrangeHrm:
         self.wd = self.app.wd
         self.sideMenu = SideMenu(self.step, self.wd)
         self.hrAdministration = HrAdministration(self.step, self.wd)
+        self.popUp = PopUp(self.step, self.wd)
 
     def openUrl(self, url):
         self.wd.get(url)
