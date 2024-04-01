@@ -106,7 +106,7 @@ class StepHelper:
     def get_elements_texts(self, locator):
         # Retrieves texts from all elements matching the specified locator and returns them as a list.
         WebDriverWait(self.wd, 10).until(
-            EC.presence_of_all_elements_located((selfget_how(locator), locator)))
+            EC.presence_of_all_elements_located((self.get_how(locator), locator)))
         elements = self.wd.find_elements(self.get_how(locator), locator)
         texts = []
         for element in elements:
