@@ -73,6 +73,16 @@ class StepHelper:
             time.sleep(2)
         return element.text
 
+    def get_element_attribute_value(self, locator, attribute, scrollInToView=False):
+        # Retrieves the value of a specified attribute from an element, optionally scrolling it into view.
+        element = WebDriverWait(self.wd, 10).until(
+            EC.visibility_of_element_located((self.get_how(locator), locator)))
+        if scrollInToView:
+            self.wd.execute_script(
+                "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });", element)
+            time.sleep(2)
+        return element.get_attribute(attribute)
+
     def specified_element_is_not_present(self, locator, waitingTime=3):
         # Waits to ensure a specified element is not present or becomes invisible.
         time.sleep(1)
