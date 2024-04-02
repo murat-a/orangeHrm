@@ -11,3 +11,4 @@
 # 6. Verify that the list of retrieved widget names matches the expected list.
 # Expected Result:
 # The 'get_widget_names' method should return an accurate list of widget names that are present within the HR Management component.
+
