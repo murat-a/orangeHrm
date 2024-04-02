@@ -34,6 +34,8 @@
 # 2. Login to the application with valid credentials.
 # 3. Navigate to the 'HR Administration' section from the left menu.
 # 4. Click on the 'Filter Users' button.
+# 5. Get default values from all drop-downs (you should create a separate method for each drop-down)
+# 6. Assert values from all drop-downs in test (you should assert values separately for each drop-down) using assert_that(['a','b']).is_equal_to(['a','b'])
 # Expected Result:
 # All dropdowns in the 'Filter Users' pop-up should display their default values.
 
