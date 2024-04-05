@@ -17,6 +17,9 @@ class PopUp:
     pass_length_message = '//input[@id="password"]/following::span[text()="Your password should have at least 8 characters."]'
     pass_strength_message = '.password-strength-check'
     empty_space = '.password-help-text-container small'
+    password_error_massage = '//input[@id="password"]/following-sibling::span'
+    confirm_password_error_massage = '//input[@id="confirmpassword"]/following-sibling::span'
+    strength_indicator = '.password-strength-check'
 
     def __init__(self, step: StepHelper, wd: WebDriver):
         self.step = step
@@ -29,6 +32,7 @@ class PopUp:
         self.step.input_text(self.employee_name_field, text)
 
     def set_password(self, text):
+        self.step.click_on_element(self.password_field)
         self.step.input_text(self.password_field, text)
 
     def set_confirm_password(self, text):
@@ -42,3 +46,13 @@ class PopUp:
 
     def click_on_search(self):
         self.step.click_on_element(self.filter_search_button)
+
+    def get_strength_indicator_text(self):
+        self.step.specified_element_is_present(self.strength_indicator, 5)
+        return self.step.get_element_text(self.strength_indicator)
+
+    def get_password_error(self):
+        return self.step.get_element_text(self.password_error_massage)
+
+    def get_confirm_password_error(self):
+        return self.step.get_element_text(self.confirm_password_error_massage)
