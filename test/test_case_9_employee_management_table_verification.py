@@ -12,9 +12,9 @@ def test_case_9_employee_management_table_verification(app):
         sorted(job_titles))
     app.assert_that(sorted(app.orangeHrm.employeeManagement.table.get_column_data('employment_status'))).is_equal_to(
         sorted(employments_statusses))
-    app.assert_that(app.orangeHrm.employeeMgmt.table[1]['employee_id']).is_equal_to('1061')
-    app.assert_that(app.orangeHrm.employeeMgmt.table[0]['employee_name']).is_equal_to('Mazie Abraham')
-    app.assert_that(app.orangeHrm.employeeMgmt.table[4]['employment_status']).is_equal_to('Full-Time Permanent')
+    app.assert_that(app.orangeHrm.employeeManagement.table[1]['employee_id']).is_equal_to('1061')
+    app.assert_that(app.orangeHrm.employeeManagement.table[0]['employee_name']).is_equal_to('Mazie Abraham')
+    app.assert_that(app.orangeHrm.employeeManagement.table[4]['employment_status']).is_equal_to('Full-Time Permanent')
 
 
 employee_ids = ['0123', '1061', '1055', '0125', '1058', '1002', '1072', '1080', '1144', '1149',
