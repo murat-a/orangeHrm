@@ -161,3 +161,11 @@ class PopUp:
         self.step.click_on_element(self.location_drop_down, True)
         time.sleep(1)
         self.step.click_element_containing_text(self.list_of_drop_down_values, text)
+
+    def set_hr_administration_drop_downs(self, user_name=None, employee_name=None, ess_role=None):
+        if user_name is not None:
+            self.set_username(user_name)
+        if employee_name is not None:
+            self.set_employee_name(employee_name)
+        if ess_role is not None:
+            self.set_ess_role_input_dropdown(ess_role)
