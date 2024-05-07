@@ -5,8 +5,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class PopUp:
-    user_name_field = '#systemuser_uname_filter'
-    employee_name_field = '#employee_name_filter_value'
+    user_name_field = '#user_name'
+    employee_name_field = '#selectedEmployee_value'
     password_field = '#password'
     confirm_password_field = '#confirmpassword'
     save_button = '#modal-save-button'
@@ -23,7 +23,7 @@ class PopUp:
     confirm_password_error_massage = '//input[@id="confirmpassword"]/following-sibling::span'
     strength_indicator = '.password-strength-check'
     autocomplete_dropdown = '#employee_name_filter_dropdown span.angucomplete-title'
-    message_no_results = "//div[contains(@id, 'employee_name_filter_dropdown') and not(contains(@class, 'ng-hide'))]//div[contains(@class, 'angucomplete-searching') and not(contains(@class, 'ng-hide')) and text()='No results found']"
+    message_no_results = "//div[contains(text(),'No results found')]"
     ess_role_input_field = '#essroles_inputfileddiv input'
     ess_role_dropdown_values = '#essroles_inputfileddiv li'
     supervisor_role_input_field = '#supervisorroles_inputfileddiv input'
@@ -74,6 +74,7 @@ class PopUp:
 
     def get_strength_indicator_text(self):
         self.step.specified_element_is_present(self.strength_indicator, 5)
+        time.sleep(0.5)
         return self.step.get_element_text(self.strength_indicator)
 
     def get_password_error(self):
