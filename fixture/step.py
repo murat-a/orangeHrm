@@ -126,13 +126,17 @@ class StepHelper:
             texts.append(text)
         return texts
 
-    def click_element_by_text(self, locator, text, scrollInToView=False):
-        # Clicks on an element within a list that matches the specified text.
+    def click_element_by_text(self, locator, text, scrollIntoView=False, smartScroll=False):
         elements = self.get_list_of_elements(locator)
         for element in elements:
-            if element.text == text:
-                if scrollInToView:
-                    self.wd.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)  # используем метод скроллинга, описанный выше
+            if smartScroll:
+                # Smart scrolling: scroll a little, then check if the element is visible
+                self.wd.execute_script("arguments[0].scrollIntoView({block: 'nearest'});", element)
+                time.sleep(0.5)
+            if element.text == text and element.is_displayed():
+                if scrollIntoView:
+                    self.wd.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",
+                                           element)
                     time.sleep(1)
                 element.click()
                 break
@@ -163,3 +167,47 @@ class StepHelper:
             EC.visibility_of_element_located((self.get_how(locator), locator)))
         self.wd.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
         time.sleep(1)
+
+    def assert_lists_equal_with_diff(self, actual, expected):
+        try:
+            # Utilize assert_that from the Application class
+            self.app.assert_that(sorted(actual)).is_equal_to(sorted(expected))
+        except AssertionError as e:
+            # Calculate differences
+            actual_set = set(actual)
+            expected_set = set(expected)
+            expected_but_missing = expected_set - actual_set
+            found_but_not_expected = actual_set - expected_set
+            # Constructing the detailed error message
+            error_message = (
+                f"{str(e)}\n"
+                f"Items expected to be in the list but missing: {expected_but_missing}\n"
+                f"Items not expected to be in the list but found: {found_but_not_expected}"
+            )
+            raise AssertionError(error_message) from None
+
+    def switch_to_tab_by_title(self, partial_title):
+        # Switches to a tab where the title contains the given substring.
+        current_window = self.wd.current_window_handle
+        for handle in self.wd.window_handles:
+            self.wd.switch_to.window(handle)
+            if partial_title in self.wd.title:
+                return True
+        # Switch back to the original window if no matching title is found
+        self.wd.switch_to.window(current_window)
+        return False
+
+    def switch_to_tab_by_url(self, full_url):
+        current_window = self.wd.current_window_handle
+        for handle in self.wd.window_handles:
+            self.wd.switch_to.window(handle)
+            if self.wd.current_url == full_url:
+                return
+        self.wd.switch_to.window(current_window)
+
+    def switch_to_iframe(self, locator):
+        iframe_element = self.wait_for_element(locator)
+        self.wd.switch_to.frame(iframe_element)
+
+    def switch_to_default_content(self):
+        self.wd.switch_to.default_content()

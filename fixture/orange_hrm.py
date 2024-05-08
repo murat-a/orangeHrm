@@ -7,6 +7,8 @@ from fixture.side_menu import SideMenu
 from fixture.step import StepHelper
 from dotenv import load_dotenv
 
+from fixture.training import Training
+
 load_dotenv()
 
 
@@ -26,8 +28,9 @@ class OrangeHrm:
         self.hrAdministration = HrAdministration(self.step, self.wd)
         self.popUp = PopUp(self.step, self.wd)
         self.employeeManagement = EmployeeManagement(self.step, self.wd)
+        self.training = Training(self.step, self.wd)
 
-    def openUrl(self, url="https://portnov_administrator-trials712.orangehrmlive.com"):
+    def openUrl(self, url="https://admin_portnov-trials712.orangehrmlive.com"):
         self.wd.get(url)
 
     def set_username(self, username):
@@ -56,3 +59,9 @@ class OrangeHrm:
 
     def get_header_text(self):
         return self.step.get_element_text(self.header)
+
+    def open_application_and_login(self):
+        def open_application_and_login(self):
+            self.openUrl()
+            self.login_to_the_application()
+            self.app.assert_that(self.app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
