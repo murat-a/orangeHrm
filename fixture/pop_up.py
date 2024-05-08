@@ -46,6 +46,7 @@ class PopUp:
     def __init__(self, step: StepHelper, wd: WebDriver):
         self.step = step
         self.wd = wd
+        self.training_filter = TrainingFilter(step, wd)
 
     def set_username(self, text):
         self.step.input_text(self.user_name_field, text)
@@ -170,3 +171,17 @@ class PopUp:
             self.set_employee_name(employee_name)
         if ess_role is not None:
             self.set_ess_role_input_dropdown(ess_role)
+
+
+class TrainingFilter:
+    title_field = 'div[class="input-field row"] #searchCourse_title'
+    iframe = "#noncoreIframe"
+
+    def __init__(self, step: StepHelper, wd: WebDriver):
+        self.step = step
+        self.wd = wd
+
+    def set_title(self, title):
+        self.step.switch_to_iframe(self.iframe)
+        self.step.input_text(self.title_field, title)
+        self.step.switch_to_default_content()

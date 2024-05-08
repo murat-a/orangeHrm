@@ -7,6 +7,8 @@ from fixture.side_menu import SideMenu
 from fixture.step import StepHelper
 from dotenv import load_dotenv
 
+from fixture.training import Training
+
 load_dotenv()
 
 
@@ -26,6 +28,7 @@ class OrangeHrm:
         self.hrAdministration = HrAdministration(self.step, self.wd)
         self.popUp = PopUp(self.step, self.wd)
         self.employeeManagement = EmployeeManagement(self.step, self.wd)
+        self.training = Training(self.step, self.wd)
 
     def openUrl(self, url="https://admin_portnov-trials712.orangehrmlive.com"):
         self.wd.get(url)
