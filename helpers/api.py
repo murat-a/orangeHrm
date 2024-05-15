@@ -18,7 +18,7 @@ class Api:
         })
 
         login_page_url = 'https://admin_portnov-trials712.orangehrmlive.com/auth/login'
-        login_page_response = Api.session.get(login_page_url)
+        login_page_response = Api.session.get(login_page_url, verify=False)
         if login_page_response.status_code != 200:
             return None
 
@@ -76,3 +76,7 @@ class Api:
 
 # Example usage (in a test environment):
 # Api.create_candidate("John", "Doe", "2024-05-13", "john.dodfdfe@example.com")
+def test_add_candidate_api_demo(app):
+    Api.add_candidate_recruitment_section("Dimash", "Test", "2024-05-13", "dimash.dodsdffdfe@example.com")
+    app.orangeHrm.openUrl()
+    app.orangeHrm.login_to_the_application()
