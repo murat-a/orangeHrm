@@ -3,6 +3,7 @@ import os
 from fixture.employee_management import EmployeeManagement
 from fixture.hr_administration import HrAdministration
 from fixture.pop_up import PopUp
+from fixture.recruitment_ats import RecruitmentAts
 from fixture.side_menu import SideMenu
 from fixture.step import StepHelper
 from dotenv import load_dotenv
@@ -29,6 +30,7 @@ class OrangeHrm:
         self.popUp = PopUp(self.step, self.wd)
         self.employeeManagement = EmployeeManagement(self.step, self.wd)
         self.training = Training(self.step, self.wd)
+        self.recruitmentAts = RecruitmentAts(self.step, self.wd)
 
     def openUrl(self, url="https://admin_portnov-trials712.orangehrmlive.com"):
         self.wd.get(url)
@@ -61,7 +63,6 @@ class OrangeHrm:
         return self.step.get_element_text(self.header)
 
     def open_application_and_login(self):
-        def open_application_and_login(self):
-            self.openUrl()
-            self.login_to_the_application()
-            self.app.assert_that(self.app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
+        self.openUrl()
+        self.login_to_the_application()
+        self.app.assert_that(self.app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
