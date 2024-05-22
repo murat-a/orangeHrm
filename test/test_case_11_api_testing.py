@@ -13,5 +13,5 @@ def test_verify_candidate_one_api_demo(app):
     app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.orangeHrm.sideMenu.click_on_side_menu_button('Recruitment (ATS)')
-    app.orangeHrm.recruitment.search_candidate_name('Dimash Test')
+    app.orangeHrm.recruitment.search_candidate_name('Dimash2 Test')
     time.sleep(3)
