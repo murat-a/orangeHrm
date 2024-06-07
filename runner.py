@@ -35,7 +35,7 @@ def run_tests_and_generate_report(headless=False, parallel=False, group=None, te
         pytest_cmd.append(test_name)
     else:
         # Use the default test directory if no specific test is specified
-        pytest_cmd.append('lessons/lesson_22')
+        pytest_cmd.append('lessons/lesson_23')
 
     if headless:
         pytest_cmd.append('--headless')
