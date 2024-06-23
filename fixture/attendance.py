@@ -1,12 +1,14 @@
 from fixture.step import StepHelper
 from selenium.webdriver.remote.webdriver import WebDriver
 
-class RecruitmentATS:
-    search_field = "input[data-test='autocompleteSelect']"
+class Attendance:
+    table_headers = ".report-header-truncate"
 
     def __init__(self, step: StepHelper, wd: WebDriver):
         self.step = step
         self.wd = wd
 
-    def search_candidate_name(self, text):
-        self.step.input_text(self.search_field, text)
+    def get_table_headers(self):
+        print(self.table_headers)
+
+
